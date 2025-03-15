@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <h1>Recipe Roulette</h1>
-      <HeaderMsg />
+      <HeaderMsg page={"home"}/>
       <Categories />
       <ConditionalRecipeDisplay />
     </>
