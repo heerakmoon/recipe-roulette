@@ -29,17 +29,19 @@ const Categories = () => {
   if (error) return <div>Error: {error}</div>
 
   return (
-    <div>
-      <div>
-        <h2>Categories</h2>
-        <p>Select categories to filter and narrow down your recipe options</p>
+    <div className="w-3/4 border border-solid border-[#B6B6B6] rounded-md py-4 px-6">
+      <div className="flex items-end">
+        <h4>Categories</h4>
+        <p className="">Select categories to filter and narrow down your recipe options</p>
       </div>
-      {categories.map((category) => (
-        <Category
-          key={category.idCategory}
-          category={category.strCategory}
-        />
-      ))}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-3">
+        {categories.map((category) => (
+          <Category
+            key={category.idCategory}
+            category={category.strCategory}
+          />
+        ))}
+      </div>
       <Button btnText={"Surprise Me!"} />
     </div>
   );
