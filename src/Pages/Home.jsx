@@ -5,7 +5,7 @@ import ConditionalRecipeDisplay from '../components/ConditionalRecipeDisplay';
 const Home = () => {
   return (
     <>
-      <h1>Recipe Roulette</h1>
+      <h1 className="text-[#0B6F10]">Recipe Roulette</h1>
       <HeaderMsg page={"home"}/>
       <Categories />
       <ConditionalRecipeDisplay />

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Category from "./Category";
+import Button from "./Button";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -39,6 +40,7 @@ const Categories = () => {
           category={category.strCategory}
         />
       ))}
+      <Button btnText={"Surprise Me!"} />
     </div>
   );
 };

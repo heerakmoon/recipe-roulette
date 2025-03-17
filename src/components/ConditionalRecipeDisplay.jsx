@@ -1,7 +1,9 @@
+import NoRecipe from './NoRecipe';
+
 const ConditionalRecipeDisplay = () => {
   return (
     <>
-      <p>No recipes - temp text</p>
+      <NoRecipe page={"home"} />
     </>
   )
 }
