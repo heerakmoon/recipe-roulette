@@ -5,6 +5,7 @@
     h1 {
       font-size: var(--text-4xl);
       font-weight: bold;
+      font-family: 'Geologica', sans-serif;
     }
     h2 {
       font-size: var(--text-3xl);
@@ -27,3 +28,11 @@
       font-weight: bold;
     }
   }
+
+.fustat {
+  font-family: 'Fustat', sans-serif;
+}
+
+.geologica {
+  font-family: 'Geologica', sans-serif;
+}
