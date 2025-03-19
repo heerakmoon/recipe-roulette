@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Category from "./Category";
 import Button from "./Button";
 
-const Categories = () => {
+const Categories = ({ onRandomRecipe }) => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -54,7 +54,7 @@ const Categories = () => {
         ))}
       </div>
       {console.log('selectedCategories: ', selectedCategories)} {/* remove later */}
-      <Button btnText={"Surprise Me!"} />
+      <Button click={onRandomRecipe} btnText={"Surprise Me!"} />
     </form>
   );
 };

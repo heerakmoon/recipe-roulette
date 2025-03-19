@@ -1,9 +1,10 @@
-import NoRecipe from './NoRecipe';
-
-const ConditionalRecipeDisplay = () => {
+const ConditionalRecipeDisplay = ({recipe}) => {
+  console.log('conditional recipe:', recipe);
   return (
     <>
-      <NoRecipe page={"home"} />
+      <div>
+        recipe FOUND
+      </div>
     </>
   )
 }
