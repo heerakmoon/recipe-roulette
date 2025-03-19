@@ -1,4 +1,4 @@
-import Home from './pages/Home';
+import Home from './Pages/Home';
 import Favorites from './pages/Favorites';
 import { BrowserRouter as Router, Routes, Route } from 'react-router';
 import './App.css'

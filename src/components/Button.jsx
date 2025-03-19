@@ -1,6 +1,11 @@
 const Button = ({ btnText }) => {
+    const handleClick = (e) => {
+        console.log("Button clicked"); // remove later
+        e.preventDefault();
+    }
+    
     return (
-        <button className="geologica bg-[#40C146] text-white w-full py-2 my-2 rounded-md">{btnText}</button>
+        <button onClick={handleClick} className="geologica bg-[#40C146] text-white w-full py-2 my-2 rounded-md">{btnText}</button>
     )
 }
 

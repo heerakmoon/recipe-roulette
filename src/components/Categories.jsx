@@ -6,6 +6,7 @@ const Categories = () => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -28,8 +29,18 @@ const Categories = () => {
   if (loading) return <div>Loading categories...</div>
   if (error) return <div>Error: {error}</div>
 
+  const handleChange = (e) => {
+    if (e.target.checked) {
+      setSelectedCategories(
+        [...selectedCategories, e.target.value]
+      )
+    } else {
+      setSelectedCategories(selectedCategories.filter((cat) => cat !== e.target.value));
+    }
+  }
+
   return (
-    <div className="w-3/4 border border-solid border-[#B6B6B6] rounded-md py-6 px-6 my-5">
+    <form className="w-3/4 border border-solid border-[#B6B6B6] rounded-md py-6 px-6 my-5" onChange={handleChange}>
       <div className="md:flex geologica">
         <h4>Categories</h4>
         <p className="text-sm md:mx-5 py-1">(Select categories to filter and narrow down your recipe options)</p>
@@ -42,8 +53,9 @@ const Categories = () => {
           />
         ))}
       </div>
+      {console.log('selectedCategories: ', selectedCategories)} {/* remove later */}
       <Button btnText={"Surprise Me!"} />
-    </div>
+    </form>
   );
 };
 
