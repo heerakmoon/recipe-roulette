@@ -1,7 +1,7 @@
 import HeaderMsg from '../components/HeaderMsg';
 import Categories from '../components/Categories';
 import NoRecipe from '../components/NoRecipe';
-import ConditionalRecipeDisplay from '../components/ConditionalRecipeDisplay';
+import RecipeDisplay from '../components/RecipeDisplay';
 import { useState } from 'react';
 
 const Home = () => {
@@ -18,7 +18,7 @@ const Home = () => {
       }
       const data = await res.json();
       setRandomRecipe(data);
-      console.log(data);
+      console.log(data); // remove
     } catch (err) {
       setError(err.message);
     } finally {
@@ -29,7 +29,7 @@ const Home = () => {
   if (loading) return <div>Loading your recipe...please wait</div>
   if (error) return <div>Error: {error}</div>
 
-  const renderRecipe = randomRecipe ? <ConditionalRecipeDisplay recipe={randomRecipe} /> : <NoRecipe page={"home"} />
+  const renderRecipe = randomRecipe ? <RecipeDisplay recipe={randomRecipe} /> : <NoRecipe page={"home"} />
 
   return (
     <div className="flex flex-col items-center mt-10">
