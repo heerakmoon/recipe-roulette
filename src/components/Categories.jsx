@@ -53,7 +53,7 @@ const Categories = ({ onRandomRecipe }) => {
           />
         ))}
       </div>
-      <Button click={onRandomRecipe} btnText={"Surprise Me!"} />
+      <Button className={"w-full my-2"} click={onRandomRecipe} btnText={"Surprise Me!"} />
     </form>
   );
 };

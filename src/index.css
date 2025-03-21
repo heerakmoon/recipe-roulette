@@ -36,3 +36,7 @@
 .geologica {
   font-family: 'Geologica', sans-serif;
 }
+
+button:hover {
+  cursor: pointer;
+}

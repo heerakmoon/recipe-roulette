@@ -29,7 +29,7 @@ const Home = () => {
   if (loading) return <div>Loading your recipe...please wait</div>
   if (error) return <div>Error: {error}</div>
 
-  const renderRecipe = randomRecipe ? <RecipeDisplay recipe={randomRecipe} /> : <NoRecipe page={"home"} />
+  const renderRecipe = randomRecipe ? <RecipeDisplay recipe={randomRecipe} onRandomRecipe={handleRandomRecipe} /> : <NoRecipe page={"home"} />
 
   return (
     <div className="flex flex-col items-center mt-10">
