@@ -1,23 +1,34 @@
-// transforms api recipe received into obj that is easer to work with
-export const transformRecipeData = (apiRecipe) => {
-  let ingredientsArr = [];
-  // let i = 1;
-  // let incrementingRecipeNum = `strIngredient${i}`;
-  // let incrementingMeasureNum = `strMeasure${i}`;
-  // let ingredientAtI = apiRecipe.meals[0][incrementingRecipeNum];
-  // let measurementAtI = apiRecipe.meals[0][incrementingMeasureNum];
-  // let ingAndMeas = `${measurementAtI} ${ingredientAtI}`;
+// transforms recipe received from api into obj that is easer to work with
+const transformRecipeData = (apiRecipe) => {
+  const meal = apiRecipe.meals[0];
+  const extractedPropsFromRecipe = [];
+  const extractedIng = [];
+  const extractedMeas = [];
+  const ingredientsArr = [];
+  
+  for (let pair of Object.entries(meal)) {
+    extractedPropsFromRecipe.push(pair);
+  }
 
-  console.log(apiRecipe);
-  // console.log('ingredients: ', ingredientAtI);
-  // console.log('measurement: ', measurementAtI);
-  // console.log('ing and meas: ', ingAndMeas)
+  for (let i = 1; i < extractedPropsFromRecipe.length; i++) {
+    if (extractedPropsFromRecipe[i][0].startsWith("strIng")) {
+      extractedIng.push(extractedPropsFromRecipe[i]);
+    } else if (extractedPropsFromRecipe[i][0].startsWith("strMeas")) {
+      extractedMeas.push(extractedPropsFromRecipe[i]);
+    }
+  }
+
+  for (let i = 0; i < extractedIng.length; i++) {
+    if (extractedIng[i][1]) ingredientsArr.push(`${extractedMeas[i][1]} ${extractedIng[i][1]}`);
+  }
 
   return {
-    id: apiRecipe.meals[0].idMeal,
-    name: apiRecipe.meals[0].strMeal,
-    image: apiRecipe.meals[0].strMealThumb,
+    id: meal.idMeal,
+    name: meal.strMeal,
+    image: meal.strMealThumb,
     ingredients: ingredientsArr,
-    instructions: apiRecipe.meals[0].strInstructions
+    instructions: meal.strInstructions
   }
 }
+
+export default transformRecipeData;

@@ -53,7 +53,6 @@ const Categories = ({ onRandomRecipe }) => {
           />
         ))}
       </div>
-      {console.log('selectedCategories: ', selectedCategories)} {/* remove later */}
       <Button click={onRandomRecipe} btnText={"Surprise Me!"} />
     </form>
   );
