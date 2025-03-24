@@ -3,7 +3,7 @@ import { NotebookText } from 'lucide-react';
 
 const classes = {
   parentDiv: "fustat my-2 py-20 px-5 w-3/4 grid place-items-center border border-dashed border-[#B6B6B6] rounded-md",
-  icon: "text-[#70DF76] w-[50px] h-[50px]"
+  icon: "text-[#70DF76] w-[50px] h-[50px] pb-2"
 }
 
 const NoRecipe = ({ page }) => {

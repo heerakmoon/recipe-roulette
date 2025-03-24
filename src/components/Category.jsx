@@ -2,7 +2,7 @@ const Category = ({ category }) => {
   return (
     <div>
       <input type="checkbox" value={category}/>
-      <label>{category}</label>
+      <label className="pl-1">{category}</label>
     </div>
   )
 }
