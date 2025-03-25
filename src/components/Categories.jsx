@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Category from "./Category";
 import Button from "./Button";
 
-const Categories = ({ onRandomRecipe }) => {
+const Categories = ({ passCategories }) => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -39,6 +39,8 @@ const Categories = ({ onRandomRecipe }) => {
     }
   }
 
+  console.log('selectedCategories: ', selectedCategories);
+
   return (
     <form className="w-3/4 border border-solid border-[#B6B6B6] rounded-md py-6 px-6 my-5" onChange={handleChange}>
       <div className="md:flex geologica">
@@ -53,7 +55,7 @@ const Categories = ({ onRandomRecipe }) => {
           />
         ))}
       </div>
-      <Button className={"w-full my-2"} click={onRandomRecipe} btnText={"Surprise Me!"} />
+      <Button className={"w-full my-2"} click={passCategories} btnText={"Surprise Me!"} />
     </form>
   );
 };
