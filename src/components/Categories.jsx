@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import Category from "./Category";
 import Button from "./Button";
+import randomFromCategories from "../utils/randomFromCategories";
+import randomFromAll from "../utils/randomFromAll";
 
-const Categories = ({ passCategories }) => {
+const Categories = ({ passRecipe, passCategories }) => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedCategories, setSelectedCategories] = useState([]);
 
+  // GETs the categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -29,6 +32,7 @@ const Categories = ({ passCategories }) => {
   if (loading) return <div>Loading categories...</div>
   if (error) return <div>Error: {error}</div>
 
+  // Keeps track of selected categories
   const handleChange = (e) => {
     if (e.target.checked) {
       setSelectedCategories(
@@ -39,7 +43,15 @@ const Categories = ({ passCategories }) => {
     }
   }
 
-  console.log('selectedCategories: ', selectedCategories);
+  // receive recipe data, gets passed to parent, Home.jsx
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const result = selectedCategories.length >= 1
+      ? await randomFromCategories(selectedCategories)
+      : await randomFromAll();
+    passRecipe(result);
+    passCategories(selectedCategories);
+  }
 
   return (
     <form className="w-3/4 border border-solid border-[#B6B6B6] rounded-md py-6 px-6 my-5" onChange={handleChange}>
@@ -55,7 +67,7 @@ const Categories = ({ passCategories }) => {
           />
         ))}
       </div>
-      <Button className={"w-full my-2"} click={passCategories} btnText={"Surprise Me!"} />
+      <Button className={"w-full my-2"} click={handleClick} selectedCategories={selectedCategories} btnText={"Surprise Me!"} />
     </form>
   );
 };
