@@ -40,7 +40,7 @@ const RecipeDisplay = ({ initialRecipe, categories }) => {
         <div className="flex justify-between">
           <h4 className="geologica">{recipe.name}</h4>
           <div>
-            <Star onClick={handleStarClick} {...starProps} className="text-[#858585]" />
+            <Star onClick={handleStarClick} {...starProps} className="cursor-pointer text-[#858585]" />
           </div>
         </div>
         <h5 className="geologica">Ingredients</h5>
