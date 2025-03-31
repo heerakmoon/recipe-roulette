@@ -2,7 +2,7 @@ import randomFromAll from '../utils/randomFromAll';
 import randomFromCategories from '../utils/randomFromCategories';
 import Button from './Button';
 import { Star } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const RecipeDisplay = ({ initialRecipe, categories }) => {
   const [recipe, setRecipe] = useState(initialRecipe);
@@ -26,6 +26,12 @@ const RecipeDisplay = ({ initialRecipe, categories }) => {
     }
   }
 
+  useEffect(() => {
+    const addToFav = favorited ? localStorage.setItem(recipe.id, JSON.stringify(recipe)) : localStorage.removeItem(recipe.id);
+
+    return addToFav;
+  })
+
   return (
     <>
     <div className="w-3/4 border border-solid border-[#B6B6B6] rounded-lg mb-8">
@@ -33,7 +39,9 @@ const RecipeDisplay = ({ initialRecipe, categories }) => {
       <div className="p-3">
         <div className="flex justify-between">
           <h4 className="geologica">{recipe.name}</h4>
-          <Star onClick={handleStarClick} {...starProps} className="text-[#858585]" />
+          <div>
+            <Star onClick={handleStarClick} {...starProps} className="text-[#858585]" />
+          </div>
         </div>
         <h5 className="geologica">Ingredients</h5>
         <ul className="fustat list-disc list-inside p-2">
