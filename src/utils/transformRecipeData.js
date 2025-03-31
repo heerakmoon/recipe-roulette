@@ -1,6 +1,7 @@
 // transforms recipe received from api into obj that is easer to work with
 const transformRecipeData = (apiRecipe) => {
   const meal = apiRecipe.meals[0];
+  const favorited = localStorage.getItem(meal.idMeal) !== null;
   const extractedPropsFromRecipe = [];
   const extractedIng = [];
   const extractedMeas = [];
@@ -24,6 +25,7 @@ const transformRecipeData = (apiRecipe) => {
 
   return {
     id: meal.idMeal,
+    favorited: favorited,
     name: meal.strMeal,
     image: meal.strMealThumb,
     ingredients: ingredientsArr,

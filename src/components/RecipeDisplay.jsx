@@ -6,7 +6,8 @@ import { useEffect, useState } from 'react';
 
 const RecipeDisplay = ({ initialRecipe, categories }) => {
   const [recipe, setRecipe] = useState(initialRecipe);
-  const [favorited, setFavorited] = useState(false);
+  const [favorited, setFavorited] = useState(recipe.favorited);
+  let id = recipe.id;
 
   const handleClick = async () => {
     const searchAgain = categories.length >= 1
@@ -16,7 +17,7 @@ const RecipeDisplay = ({ initialRecipe, categories }) => {
   }
 
   const handleStarClick = () => {
-    setFavorited(!favorited);
+    setFavorited((prev) => !prev); // not as reliable to use !favorited in rapid updates and if there's another update before React processes the first one favorited might become outdated (stale state), this way it's based on the latest state value
   }
 
   const starProps = {
@@ -27,7 +28,7 @@ const RecipeDisplay = ({ initialRecipe, categories }) => {
   }
 
   useEffect(() => {
-    const addToFav = favorited ? localStorage.setItem(recipe.id, JSON.stringify(recipe)) : localStorage.removeItem(recipe.id);
+    const addToFav = favorited ? localStorage.setItem(id, JSON.stringify(recipe)) : localStorage.removeItem(id);
 
     return addToFav;
   })
