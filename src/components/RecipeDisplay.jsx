@@ -6,12 +6,24 @@ import { useState } from 'react';
 
 const RecipeDisplay = ({ initialRecipe, categories }) => {
   const [recipe, setRecipe] = useState(initialRecipe);
+  const [favorited, setFavorited] = useState(false);
 
   const handleClick = async () => {
     const searchAgain = categories.length >= 1
       ? await randomFromCategories(categories)
       : await randomFromAll();
     setRecipe(searchAgain);
+  }
+
+  const handleStarClick = () => {
+    setFavorited(!favorited);
+  }
+
+  const starProps = {
+    style: {
+      color: favorited ? 'yellow' : 'grey',
+      fill: favorited ? 'yellow' : 'white',
+    }
   }
 
   return (
@@ -21,7 +33,7 @@ const RecipeDisplay = ({ initialRecipe, categories }) => {
       <div className="p-3">
         <div className="flex justify-between">
           <h4 className="geologica">{recipe.name}</h4>
-          <Star className="text-[#858585]" />
+          <Star onClick={handleStarClick} {...starProps} className="text-[#858585]" />
         </div>
         <h5 className="geologica">Ingredients</h5>
         <ul className="fustat list-disc list-inside p-2">
