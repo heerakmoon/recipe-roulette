@@ -18,6 +18,7 @@ const RecipeDisplay = ({ initialRecipe, categories }) => {
 
   const handleStarClick = () => {
     setFavorited((prev) => !prev); // not as reliable to use !favorited in rapid updates and if there's another update before React processes the first one favorited might become outdated (stale state), this way it's based on the latest state value
+    recipe.favorited = !recipe.favorited;
   }
 
   const starProps = {
