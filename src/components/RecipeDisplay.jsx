@@ -2,10 +2,12 @@ import randomFromAll from '../utils/randomFromAll';
 import randomFromCategories from '../utils/randomFromCategories';
 import Button from './Button';
 import { Star } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const RecipeDisplay = ({ initialRecipe, categories }) => {
   const [recipe, setRecipe] = useState(initialRecipe);
+  const [favorited, setFavorited] = useState(recipe.favorited);
+  let id = recipe.id;
 
   const handleClick = async () => {
     const searchAgain = categories.length >= 1
@@ -14,6 +16,24 @@ const RecipeDisplay = ({ initialRecipe, categories }) => {
     setRecipe(searchAgain);
   }
 
+  const handleStarClick = () => {
+    setFavorited((prev) => !prev); // not as reliable to use !favorited in rapid updates and if there's another update before React processes the first one favorited might become outdated (stale state), this way it's based on the latest state value
+    recipe.favorited = !recipe.favorited;
+  }
+
+  const starProps = {
+    style: {
+      color: favorited ? 'yellow' : 'grey',
+      fill: favorited ? 'yellow' : 'white',
+    }
+  }
+
+  useEffect(() => {
+    const addToFav = favorited ? localStorage.setItem(id, JSON.stringify(recipe)) : localStorage.removeItem(id);
+
+    return addToFav;
+  })
+
   return (
     <>
     <div className="w-3/4 border border-solid border-[#B6B6B6] rounded-lg mb-8">
@@ -21,7 +41,9 @@ const RecipeDisplay = ({ initialRecipe, categories }) => {
       <div className="p-3">
         <div className="flex justify-between">
           <h4 className="geologica">{recipe.name}</h4>
-          <Star className="text-[#858585]" />
+          <div>
+            <Star onClick={handleStarClick} {...starProps} className="cursor-pointer text-[#858585]" />
+          </div>
         </div>
         <h5 className="geologica">Ingredients</h5>
         <ul className="fustat list-disc list-inside p-2">

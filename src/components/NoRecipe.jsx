@@ -29,4 +29,5 @@ const NoRecipe = ({ page }) => {
     )
   }
 }
+
 export default NoRecipe;
