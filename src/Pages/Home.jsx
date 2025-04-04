@@ -4,7 +4,7 @@ import NoRecipe from '../components/NoRecipe';
 import RecipeDisplay from '../components/RecipeDisplay';
 import WebHeader from '../components/WebHeader';
 import { useEffect, useState } from 'react';
-import { Star } from 'lucide-react';
+import FavoritesButton from '../components/FavoritesButton';
 
 const Home = () => {
   const [randomRecipe, setRandomRecipe] = useState(null);
@@ -35,7 +35,7 @@ const Home = () => {
       <HeaderMsg page={"home"}/>
       <Categories passRecipe={handleRecipe} passCategories={handleCategories} />
       {renderRecipe}
-      {screenWidth < 512 && <div className="py-3 fixed bottom-0 bg-white w-full flex justify-center"><Star className="text-left cursor-pointer text-[#858585]" /></div>}
+      {screenWidth < 512 && <div className="py-3 fixed bottom-0 bg-white w-full flex justify-center"><FavoritesButton /></div>}
     </div>
   )
 }
