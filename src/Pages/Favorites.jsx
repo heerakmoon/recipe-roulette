@@ -11,10 +11,13 @@ const Favorites = () => {
     <div className="flex flex-col items-center mt-10 pb-12">
       {screenWidth >= 512 ? <WebHeader page="favorites" /> : <h1 className="text-[#0B6F10]">Recipe Roulette</h1>}
       <HeaderMsg page="favorites" />
-      <div className="py-3 fixed bottom-0 bg-white w-full flex justify-center">
-        {screenWidth < 512 && location.pathname === "/favorites" &&  <HomeButton />}
-        {screenWidth < 512 && <div ><FavoritesButton /></div>}
-      </div>
+      {screenWidth < 512 && (
+        <div className="w-3/4 py-3 fixed bottom-0 bg-white flex justify-between">
+          <HomeButton />
+          <div ><FavoritesButton /></div>
+          <div className="w-[24px]"></div>
+        </div>
+      )}
     </div>
   )
 };
