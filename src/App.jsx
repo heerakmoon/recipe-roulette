@@ -1,5 +1,5 @@
 import Home from './Pages/Home';
-import Favorites from './pages/Favorites';
+import Favorites from './Pages/Favorites';
 import { BrowserRouter as Router, Routes, Route } from 'react-router';
 import './App.css'
 

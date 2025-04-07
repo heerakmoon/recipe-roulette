@@ -1,19 +1,24 @@
 import RecipeCard from "./RecipeCard";
+import { useState, useEffect } from "react";
 
 const FavoritesList = () => {
-    const favoritesArr = [];
+    const [favoritesArr, setFavoritesArr] = useState([]);
 
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        console.log('key: ', key);
-        const value = localStorage.getItem(key);
-        favoritesArr.push(JSON.parse(value));
-    }
-
-    console.log('favoritesArr: ', favoritesArr);
+    useEffect(() => {
+        const allFavorites = Object.keys(localStorage).map((key) => {
+            try {
+                return JSON.parse(localStorage.getItem(key));
+            } catch {
+                return null;
+            }
+        })
+        setFavoritesArr(allFavorites);
+    },  []);
         
     return (
-        <RecipeCard recipeInfo={favoritesArr[0]} />
+        <div className="w-3/4 grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
+            {favoritesArr.map((recipe) => <RecipeCard recipeInfo={recipe} />)}
+        </div>
     )
 }
 
