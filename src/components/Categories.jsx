@@ -10,7 +10,6 @@ const Categories = ({ passRecipe, passCategories }) => {
   const [loading, setLoading] = useState(true);
   const [selectedCategories, setSelectedCategories] = useState([]);
 
-  // GETs the categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -32,7 +31,6 @@ const Categories = ({ passRecipe, passCategories }) => {
   if (loading) return <div>Loading categories...</div>
   if (error) return <div>Error: {error}</div>
 
-  // Keeps track of selected categories
   const handleChange = (e) => {
     if (e.target.checked) {
       setSelectedCategories(
@@ -43,7 +41,6 @@ const Categories = ({ passRecipe, passCategories }) => {
     }
   }
 
-  // receive recipe data, gets passed to parent, Home.jsx
   const handleClick = async (e) => {
     e.preventDefault();
     const result = selectedCategories.length >= 1
