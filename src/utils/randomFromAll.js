@@ -1,4 +1,3 @@
-// get a random recipe from all recipes
 import transformRecipeData from "./transformRecipeData";
 
 const randomFromAll = async () => {

@@ -1,4 +1,5 @@
-// transforms recipe received from api into obj that is easer to work with
+/* ingredients and instructions received aren't in an array and making it difficult to work with
+ transforms recipe, puts ingredients and instructions into array*/
 const transformRecipeData = (apiRecipe) => {
   const meal = apiRecipe.meals[0];
   const favorited = localStorage.getItem(meal.idMeal) !== null;
