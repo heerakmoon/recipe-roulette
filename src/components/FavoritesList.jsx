@@ -6,7 +6,7 @@ import getRecipesFromLocalStorage from "../utils/getRecipesFromLocalStorage";
 
 const FavoritesList = () => {
     const [favoritesArr, setFavoritesArr] = useState([]);
-    const [viewModal, setViewModal] = useState();
+    const [viewModal, setViewModal] = useState(false);
     const testObj = {
         favorited: true,
         id: "52787",
@@ -27,8 +27,8 @@ const FavoritesList = () => {
         setFavoritesArr(updatedFavoritesArr);
     }
 
-    const handleChildData = (data) => {
-        setViewModal(data);
+    const modalOnOff = () => {
+        setViewModal(!viewModal);
     }
 
 
@@ -39,7 +39,7 @@ const FavoritesList = () => {
                 {
                     favoritesArr.length === 0
                         ? <NoRecipe page="favorites" />
-                        : favoritesArr.map((recipe) => <RecipeCard key={recipe.id} recipeInfo={recipe} onRemove={() => removeFromFavorites(recipe.id)} onSendData={handleChildData} />)
+                        : favoritesArr.map((recipe) => <RecipeCard key={recipe.id} recipeInfo={recipe} onRemove={() => removeFromFavorites(recipe.id)} modalOn={modalOnOff} />)
 
                 }
             </div>
