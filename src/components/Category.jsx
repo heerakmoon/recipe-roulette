@@ -1,8 +1,10 @@
 const Category = ({ category }) => {
   return (
     <div>
-      <input className="cursor-pointer" type="checkbox" value={category}/>
-      <label className="cursor-pointer pl-1">{category}</label>
+      <label className="cursor-pointer">
+        <input className="cursor-pointer mr-1" type="checkbox" value={category}/>
+        {category}
+      </label>
     </div>
   )
 }
