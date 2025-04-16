@@ -1,6 +1,6 @@
 import Home from './Pages/Home';
 import Favorites from './Pages/Favorites';
-import { BrowserRouter as Router, Routes, Route } from 'react-router';
+import { HashRouter as Router, Routes, Route } from 'react-router';
 import './App.css'
 
 const App = () => {
