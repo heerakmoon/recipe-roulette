@@ -1,16 +1,16 @@
 import Home from './Pages/Home';
 import Favorites from './Pages/Favorites';
-import { HashRouter as Router, Routes, Route } from 'react-router';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import './App.css'
 
 const App = () => {
   return (
-    <Router basename="/recipe-roulette">
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/favorites" element={<Favorites />} />
       </Routes>
-    </Router>
+    </HashRouter>
   )
 }
 
