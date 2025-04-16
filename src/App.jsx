@@ -5,7 +5,7 @@ import './App.css'
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/recipe-roulette">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/favorites" element={<Favorites />} />
